@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+	int *arreglo, num, con, repetir;
+	do
+	{
+		printf("\n¿Cuantos elementos tiene el conjunto?\t");
+		scanf("%d", &num);
+		arreglo = (int *)calloc (num, sizeof(int));//Le dice a calloc que multiplique el numero que guarda la variable num por el tipo de dato que es y ese espacio reserve
+		if (arreglo != NULL)
+		{
+			printf("\nVector reservado:\t\n");
+			for(con=0; con<num; con++)
+			{
+				printf("\t%d", *(arreglo+con));
+			}
+			printf("\t\n");
+			printf("Se libera el espacio reservado:\n");
+			free(arreglo);
+		}
+		printf("\nPara repetir el programa introduce 1, para salir ingresa cualquier otra cosa\n");
+		scanf("%d", &repetir);
+	}while(repetir==1);//Agregue ciclo para repetir el programa y validar todo con una sola ejecucion	
+	return 0;
+}//Farido
