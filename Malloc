@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+	int *arreglo, num, con, repetir;
+	repetir =1;
+	do 
+	{
+		printf("\n¿Cuantos elementos tiene el conjunto?\n");
+		scanf("%d", &num);//Guarda el valor de numeros del arreglo
+       		while(num<1)
+                {
+                        printf("\nEscribe un tamaño valido para el arreglo\n");
+                        scanf("%d", &num);
+                }//Aqui agregue una validacion al código para que no arroje valores negativos
+		arreglo = (int *)malloc (num * sizeof(int)); //Aquì se indica que el arreglo va a tener la memoria reservada de la variable por el tipo de dato que se tiene,
+		//por ejemplo si los enteros ocupan 8 bits(en el parámetro por eso se dice el tipo de dato que es) y lo multiplica por el numero de datos a guardar 
+		if(arreglo!= NULL)//aqui se dice que si el arreglo es diferente de 0 se ejecuta
+		{
+			printf("\nVector reservado:\t");
+			for(con=0; con<num; con++)
+			{
+				printf("\n\t%d", *(arreglo+con));
+			}
+				printf("\n\t");
+				printf("\nSe libera el espacio reservado.\n");
+				free(arreglo);
+		}
+		printf("\n¿Quieres repetir el programa?\n\t1)Si\n\t2)No\n");
+		scanf("%d", &repetir);
+		while(repetir != 1 && repetir != 2)
+		{
+			printf("\nOpcion no valida, ingresa una opcion valida\n");
+			scanf("%d", &repetir);
+		}
+	}
+	while(repetir==1);//Agregue un ciclo do/while para no tener que estar ejecutando el programa varias veces
+	return 0;
+}//Farido
