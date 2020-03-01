@@ -1,0 +1,49 @@
+#include<stdio.h> 
+#include<stdlib.h>
+
+int main()
+{
+	int repetir, *arreglo, *arreglo2, num, con;
+	do
+	{
+		printf("\n¿Cuantos elementos tiene el conjunto?\n");
+		scanf("%d", &num);
+		arreglo = (int*)malloc (num *sizeof(int));
+		if(arreglo != NULL)
+		{
+			for(con=0; con<num; con++)
+			{
+				printf("\nInserte el elemento %d del conjunto\n", con+1);
+				scanf("%d",(arreglo+con));
+			}
+			printf("\nVector insertado\n");
+			for(con=0; con<num; con++)
+			{
+				printf("\t%d",*(arreglo+con));
+			}
+			printf("\t\n");
+		}
+		printf("Aumentando el tamaño del conjunto al doble\n");
+		num *=2;//Utiliza el segunto apuntador àra aumentar el tamaño
+		arreglo2 = (int *)realloc (arreglo, num*sizeof(int));
+		if(arreglo2 != NULL)
+		{
+			arreglo = arreglo2;
+			for(; con<num; con++)
+			{
+				printf("Inserte el elemento %d del conjunto\n", con+1);
+				scanf("%d",(arreglo2+con));
+			}
+			printf("Vector insertado\n\t");
+			for(con=0; con<num; con++)
+			{
+				printf("\t%d", *(arreglo2+con));
+			}
+			printf("\t\n");
+		}
+		free(arreglo);
+		printf("\nSi quieres repetir el programa pulsa 1 si no ingresa cualquier otro valor\n");
+		scanf("%d", &repetir);
+	}while(repetir==1);
+	return 0;
+}//FARIDO
